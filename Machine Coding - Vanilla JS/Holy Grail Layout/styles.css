@@ -22,11 +22,13 @@ header, footer {
     flex: 1;
     padding: 20px;
     background-color: #f0f0f0;
+    text-align: center;
 }
 
 .side-content {
     padding: 20px;
     width: 200px;
+    text-align: center;
 }
 
 .side-left {

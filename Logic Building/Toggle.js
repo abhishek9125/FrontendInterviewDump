@@ -13,8 +13,10 @@ console.log(hello());
 console.log(hello());
 console.log(hello());
 
-let onOff = toggle("on", "off");
-console.log(onOff());
-console.log(onOff());
-console.log(onOff());
-console.log(onOff());
+let onOff = toggle("on", "off", "pause");
+console.log(onOff()); //on
+console.log(onOff()); // off
+console.log(onOff()); // pause
+console.log(onOff()); //on
+console.log(onOff()); // off
+console.log(onOff()); // pause

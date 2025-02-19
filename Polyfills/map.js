@@ -9,3 +9,4 @@ Array.prototype.map = function(cb) {
 
     return temp;
 }
+
