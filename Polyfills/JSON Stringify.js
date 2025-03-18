@@ -17,8 +17,6 @@ function jsonStringify(value) {
     }
    
     return String(value);
-  
-    throw 'Not implemented!';
   }
 
   let a = {

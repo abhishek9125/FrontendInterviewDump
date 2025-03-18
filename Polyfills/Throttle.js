@@ -1,14 +1,11 @@
-
-
 const myThrottle = (cb, delay) => {
-
-    let shouldExecute = true;
-
+    let lastExecuted = 0;
+    
     return function(...args) {
-        shouldExecute && cb(...args);
-        shouldExecute = false;
-        setTimeout(() => {
-            shouldExecute = true;
-        }, delay)
-    }
-}
+        const now = Date.now();
+        if (now - lastExecuted >= delay) {
+            lastExecuted = now;
+            cb(...args);
+        }
+    };
+};

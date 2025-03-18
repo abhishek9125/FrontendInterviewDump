@@ -1,0 +1,97 @@
+.calendar {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #1a202c;
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.subheader {
+    background-color: #1a202c;
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.subheader ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.subheader li {
+    font-size: 20px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 100px;
+    margin-right: 20px;
+}
+
+.time-slot {
+    position: relative;
+    height: 80px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.time-label {
+    position: absolute;
+    left: -100px;
+    top: -10px;
+    width: 80px;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.events-container {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    height: 100%;
+}
+
+.event {
+    position: absolute;
+    padding: 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event:hover {
+    transform: scale(1.02);
+    z-index: 1000 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.event-time {
+    font-size: 11px;
+    opacity: 0.9;
+}
