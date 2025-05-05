@@ -1,0 +1,288 @@
+- DSA Problem: 3Sum Closest
+Output-Based Questions: Generators, async/await
+
+// You are given a calendar that consists of non-overlapping time intervals. Each time interval represents a scheduled event on the calendar, where the start time of the event is represented by the start time of the interval, and the end time of the event is represented by the end time of the interval. The intervals are sorted in ascending order by their start times. 
+
+// You are also given a new event interval that needs to be added to the calendar. The new event interval has a start time and an end time, just like the other intervals on the calendar. You need to add the new interval to the calendar, such that the calendar remains sorted in ascending order by start time, and the events do not overlap. If any events overlap, you need to merge them together into one interval. 
+
+// After adding the new event interval to the calendar, you must return a list of all time intervals in the calendar in ascending order by start time.
+
+
+// Input: intervals = [[1,3],[6,9]], newInterval = [2,7]
+// Output: [[1,5],[6,9]]
+
+// Input: intervals = [[1,3],[4,5],[8,9], newInterval = [6,7]
+// Output: [[1,3],[4,5],[6,7],[8,9]]
+
+// Input: intervals = [[1,3],[4,5],[8,9], newInterval = [6,10]
+// Output: [[1,3],[4,5], [6,10]
+
+
+const intervals = [[1,3],[4,5],[8, 9][10, 11], [16, 17]];
+const newInterval = [6,12];
+
+const mergeIntervals = (intervals, newInterval) => {
+    const results = [];
+    let i = 0;
+    
+    while(intervals[i][1] < newInterval[0] && i < intervals.length) {
+        result.push(intervals[i++]);
+    } 
+    
+    let currentStart = newInterval[0];
+    let currentEnd = newInterval[1];
+    
+    while(newInterval[1] > intervals[i][0]) {
+        currentStart = Math.min(intervals[i][0], currentStart);
+        currentEnd = Math.max(intervals[i][1], currentEnd);
+        i++;
+    }
+    
+    results.push(currentStart, currentEnd);
+    
+    while(i < intervals.length && i < intervals.length) {
+        result.push(intervals[i++]);
+    }
+
+    return results;
+}
+
+console.log(mergeIntervals);
+
+
+// Question Detail - Consider you have to implement a function which validates a JSON. 
+// For the scope of this questions, consider JSON is only built with objects and no arrays. JSON's value only contains strings and none of the other values which a typical JSON contains such as numbers, boolean or even nested objects or arrays. 
+
+
+// Example: const str = '{"key": "value","number": "   str"}'
+// const str = '{"key": "value",}'
+// const str = '{"key": "value"}'
+// const str = '{}'
+// const str = '{,}'
+// ['"key": "value"', '"number": "str"']
+
+const str = '{"key"  :aklsj ""value","number": "str"}';
+const checkIsStringValid = (str) => {
+    str[0] = "";
+    str[str.length - 1] = "";
+    
+    let currentCount = 0;
+    let isValid = true;
+    let i = 0;
+    while(i < str.length) {
+        let isColonEncountered = false;
+        while((str[i] != ',') && i < str.length) {
+            if(str[i] == '"') {
+                currentCount = isColonEncountered ? currentCount - 1 : currentCount + 1;  
+            } else if(str[i] == ':') {
+                isColonEncountered = true;
+            }
+            i++;
+        }
+        if(currentCount != 0) {
+            isValid = false;
+            break;
+        }
+    }
+    
+    return isValid;
+}
+
+console.log(checkIsStringValid(str))
+
+/*
+We are given an array arr of integers representing balls in a row. The indices of the balls in the array represent their relative position in space.
+For each ball, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each ball moves at the same speed.
+Find out the state of the balls after all collisions. If two balls meet, the smaller one will explode. If both are the same size, both will explode. Two balls moving in the same direction will never meet.
+
+Input: arr = [5,10,-15]
+Output: [5,10]
+
+Input: arr = [8,-8]
+Output: []
+
+Input: arr = [10,2,-5]
+Output: [10]
+
+Input: arr = [-10,2,-5]
+Output: [-10, -5]
+
+
+*/
+
+let arr = [-2, -1, 1, 2];
+
+// const afterCollision = (arr) => {
+    
+//     const results = [];
+    
+//     for(let i = 0; i < arr.length; i++) {
+//         let top = results[results.length - 1];
+//         if((results.length == 0) || arr[i] > 0 || results[results.length - 1] < 0) {
+//             results.push(arr[i]);
+//         } else {
+//             if(Math.abs(arr[i]) === Math.abs(top)) {
+//                 results.pop();
+//             } else if(Math.abs(arr[i]) < Math.abs(top)) {
+//                 continue;
+//             } else {
+//                 while(results.length != 0 && (Math.abs(results[results.length - 1]) <= Math.abs(arr[i]) && results[results.length - 1] > 0 && arr[i] < 0)) {
+//                     results.pop();
+//                 }
+//                 if(results.length == 0 || (Math.abs(results[results.length - 1]) < Math.abs(arr[i])) || results[results.length - 1] < 0) {
+//                     results.push(arr[i]);
+//                 }
+//             }
+//         }
+//     }
+//     return results;
+// }
+
+const afterCollision = (arr) => {
+    
+    const results = [];
+    
+    for(let i = 0; i < arr.length; i++) {
+        if((results.length == 0) || arr[i] > 0 || results[results.length - 1] < 0) {
+            results.push(arr[i]);
+        } else {
+            while(results.length != 0 && (Math.abs(results[results.length - 1]) <= Math.abs(arr[i]) && results[results.length - 1] > 0 && arr[i] < 0)) {
+                results.pop();
+            }
+            
+            let top = results[results.length - 1];
+            if(results.length == 0 || (Math.abs(top) < Math.abs(arr[i])) || top < 0){
+                results.push(arr[i]);
+            }
+        }
+    }
+    return results;
+}
+
+console.log(afterCollision(arr));
+
+Group Anagrams
+
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayName = function() {
+    console.log(`My name is ${this.name}`);
+};
+
+function Employee(name, role) {
+    Person.call(this, name);
+    this.role = role;
+}
+
+// Your task:
+// Set up prototype inheritance correctly so that Employee inherits from Person.
+
+// After your fix, the following should work:
+
+const e = new Employee('Alice', 'Developer');
+e.sayName(); // Output: "My name is Alice"
+
+
+// Example async task (simulates API call)
+const taskFactory = (num, delay) => () => new Promise(resolve => {
+    setTimeout(() => {
+        console.log(`Task ${num} completed`);
+        resolve(num);
+    }, delay);
+});
+
+const tasks = [
+    taskFactory(1, 1000),
+    taskFactory(2, 500),
+    taskFactory(3, 300),
+    taskFactory(4, 400),
+    taskFactory(5, 600)
+];
+
+
+// const asyncParallelLimit = (tasks, limit) => {
+    
+//     return new Promise((resolve, reject) => {
+        
+//         let counter = 0;
+//         let resolvedCounter = 0;
+//         let lastExecuted = 0;
+//         const results = [];
+        
+//         const resolveTasks = (task, index) => {
+//             lastExecuted = index
+//             task().then((res) => {
+//                 resolvedCounter++;
+//                 counter--;
+//                 results[index] = res;
+//                 if(counter < limit && lastExecuted < (tasks.length - 1)) {
+//                     counter++;
+//                     resolveTasks(tasks[lastExecuted+1], lastExecuted+1);
+//                 }
+//                 if(resolvedCounter == tasks.length) {
+//                     resolve(results);
+//                 }
+//             }).catch(() => {});
+            
+//         }
+        
+//         for(let i = 0; i < limit; i++) {
+//             counter++;
+//             resolveTasks(tasks[i], i);
+//         }
+//     })
+    
+// }
+
+// asyncParallelLimit(tasks, 2).then(results => {
+//     console.log('Results:', results);
+// });
+
+
+const asyncParallelLimit = async (tasks, limit) => {
+    
+    const getResults = async () => {
+        let counter = 0;
+        let resolvedCounter = 0;
+        let lastExecuted = 0;
+        const results = [];
+        
+        const resolveTasks = async (task, index) => {
+            lastExecuted = index;
+            
+            let response = await task();
+            results[index] = res;
+            resolvedCounter++;
+            counter--;
+            if(counter < limit && lastExecuted < (tasks.length - 1)) {
+                counter++;
+                resolveTasks(tasks[lastExecuted+1], lastExecuted+1);
+            }
+        }
+        
+        for(let i = 0; i < limit; i++) {
+            counter++;
+            resolveTasks(tasks[i], i);
+        }
+        
+        await Promise.all(tasks)
+
+        return results;
+        
+    }
+    
+    const finalResult = await getResults();
+    return finalResult;
+}
+
+const results =  asyncParallelLimit(tasks, 2);
+console.log(results);
+// Expected console output (time approximations):
+// Task 2 completed (~500ms)
+// Task 3 completed (~800ms)
+// Task 1 completed (~1000ms)
+// Task 4 completed (~1400ms)
+// Task 5 completed (~1600ms)
+// Results: [1, 2, 3, 4, 5]

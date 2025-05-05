@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             eventElement.style.left = `${offsetLeft}px`;
             calendar.appendChild(eventElement);
 
-            lastEnd = eventEndInMinutes;
+            lastEnd = Math.max(lastEnd, eventEndInMinutes);
         })
     }
 

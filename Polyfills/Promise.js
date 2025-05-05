@@ -56,6 +56,10 @@ const myPromise = new MyPromise((resolve, reject) => {
 myPromise
 .then((res) => {
     console.log('res', res)
-}).catch((err) => {
+})
+.then((res) => {
+    console.log('res 2', res)
+})
+.catch((err) => {
     console.log('err', err)
 })

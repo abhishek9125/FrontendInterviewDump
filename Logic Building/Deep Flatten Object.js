@@ -1,23 +1,21 @@
-function deepFlatten(obj, prefix) {
-    let output = {};
-
-    for(let key in obj) {
-        let val = obj[key];
-        let newKey = prefix === '' ? key : (prefix + '.' + key);
-
-        if(val && typeof val === 'object') {
-            let recursiveOutput = deepFlatten(val, newKey);
-            output = {...output, ...recursiveOutput};
-        } else {
-            output[newKey] = val;
-        }
-    }
-
-    return output;
-}
 
 function flatten(obj) {
-    return deepFlatten(obj, '');
+    let output = {};
+    function deepFlatten(obj, prefix) {
+        for(let key in obj) {
+            let val = obj[key];
+            let newKey = prefix === '' ? key : (prefix + '.' + key);
+    
+            if(val && typeof val === 'object') {
+                deepFlatten(val, newKey);
+            } else {
+                output[newKey] = val;
+            }
+        }
+    
+    }
+    deepFlatten(obj, '');
+    return output;
 }
 
 const nested = {
